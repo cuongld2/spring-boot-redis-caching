@@ -63,7 +63,7 @@ public class BlogController {
             @ApiResponse(responseCode = "200", description = "successful operation",
                     content = @Content(schema = @Schema(implementation = Blog.class))) })
     @PostMapping("/blog")
-    @CacheEvict(value = "blog", allEntries=true)
+    @CacheEvict(value = "blog", allEntries = true)
     public Blog create(@RequestBody Map<String, String> body){
         String title = body.get("title");
         String content = body.get("content");
@@ -92,7 +92,7 @@ public class BlogController {
             @ApiResponse(responseCode = "200", description = "successful operation",
                     content = @Content(schema = @Schema(implementation =  Boolean.class))) })
     @DeleteMapping("blog/{id}")
-    @CacheEvict(value = "blog", allEntries=true)
+    @CacheEvict(value = "blog",allEntries = true)
     public boolean delete(@PathVariable String id){
         int blogId = Integer.parseInt(id);
         blogRepository.deleteById(blogId);
